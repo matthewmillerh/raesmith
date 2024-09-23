@@ -9,6 +9,7 @@ console.log(images)
         <div v-for="image in images" :key="image">
             <div class="">
                 <img :src="'.' + image.name" alt="Emily" class="h-40 w-32 p-1 m-3 border border-gray-300 bg-gray-100 rounded">
+                <img src="../assets/images/raesmith.jpg" alt="">
             </div>      
         </div>
     </div>
