@@ -12,7 +12,6 @@ const images = import.meta.glob('@/assets/images/*.jpg')
             </div>      
         </div>
     </div>
-    <img src="/public/images/raesmith.jpg" alt="">
 </template>
 
 <style>
