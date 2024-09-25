@@ -25,7 +25,7 @@ const router = createRouter({
       component: ContactView
     },
     {
-      path: '/available-works',
+      path: '/available-works/:key',
       name: 'available-works',
       component: AvailableWorksVue
     }
