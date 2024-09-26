@@ -6,6 +6,7 @@ const images = ref([])
 const artworkDetails = ref([])
 const showPrices = ref(false)
 
+//import all the images from the available works image folder
 function loadImages(){
   let artwork = []
   let artworkTemp = []
@@ -13,15 +14,20 @@ function loadImages(){
 
   //loop through each image imported from the folder
   for(let path in images.value){
+    //satrt each loop with a blank array
     artwork = []
 
-    artwork.push(path.slice(7))
+    //split the image name into an array containing the artwork details
     artworkTemp = path.slice(15).split('-')
+
+    //add each the artwork details to an array
+    artwork.push(path.slice(7))    
     artwork.push(artworkTemp[0])
     artwork.push(artworkTemp[1])
     artwork.push(artworkTemp[2])
     artwork.push(artworkTemp[3])
 
+    //add the array of artwork details to the main nested array of artworks
     artworkDetails.value.push(artwork)
   }
 }
@@ -43,7 +49,7 @@ onMounted(() => {
 
 <template>
   <div
-    class="flex justify-center flex-wrap sm:ml-4 sm:mr-4 md:ml-20 md:mr-20 lg:ml-40 lg:mr-40"
+    class="flex justify-center flex-wrap sm:ml-4 sm:mr-4 md:ml-20 md:mr-20 lg:ml-40 lg:mr-40 mt-14"
     v-viewer.static="{ transition: false, scalable: false, rotatable: false, fullscreen: false }"
   >
     <div v-for="artwork in artworkDetails" :key="artwork">
