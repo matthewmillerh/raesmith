@@ -28,10 +28,15 @@ function loadImages(){
     artwork.push(artworkTemp[3])
 
     //add the array of artwork details to the main nested array of artworks
-    artworkDetails.value.push(artwork)
+    artworkDetails.value.push(artwork)  
   }
 }
 
+//pass click event from overay to the underlying image to open it in v-viewer
+const imageRef = ref({})
+function clickImg(img){
+  imageRef.value[img].click()
+}
 
 onMounted(() => {
     const route = useRoute()
@@ -61,9 +66,10 @@ onMounted(() => {
           :src="artwork[0]"
           :alt="artwork[1]"
           class="max-w-full max-h-full rounded ml-auto mr-auto"
+          :ref="(el) => (imageRef[artwork[0]] = el)"
         />
         <!-- Information Block -->
-         <div class="absolute top-0 left-0 bottom-0 right-0 transition-all duration-300 opacity-0 hover:opacity-100 rounded hover:bg-opacity-45 hover:bg-black text-white flex justify-end items-end">
+         <div class="absolute top-0 left-0 bottom-0 right-0 transition-all duration-300 opacity-0 hover:opacity-100 rounded hover:bg-opacity-45 hover:bg-black text-white flex justify-end items-end" @click="clickImg(artwork[0])">
           <div class="p-2 text-xs">
             <p class="text-wrap text-right">{{ artwork[1] }}</p>
             <p class="text-right">{{ artwork[2] }}</p>
