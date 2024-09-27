@@ -32,15 +32,16 @@ function closeBurgerMenu(){
     <!-- End Large screen nav -->
 
     <!-- Mobile screen nav -->
-    <div class="sm:hidden fixed left-0 right-0 top-0 z-10 bg-white">
-      <div class="w-full p-1">
+    <div class="sm:hidden fixed left-0 right-0 top-0 z-20 bg-white max-h-10">
+      <div class="w-full p-1 z-20 bg-white relative">
         <h3 class="font-semibold text-sm text-center mt-2">Emily Rae Smith Labuschagne</h3>
         <div class="text-right -mt-6 h-10">
-          <Transition><i v-if="!showBurgerMenu" class="fa-solid fa-bars cursor-pointer text-2xl absolute right-2" @click="openBurgerMenu"></i></Transition>
-          <Transition><i v-if="showBurgerMenu" class="fa-solid fa-xmark cursor-pointer text-2xl absolute right-2" @click="closeBurgerMenu"></i></Transition>      
-        </div>
-        <Transition>
-          <nav class="text-center mt-1 text-base transition-all" v-if="showBurgerMenu">
+          <Transition><i v-if="!showBurgerMenu" class="fa-solid fa-bars cursor-pointer text-xl absolute right-4" @click="openBurgerMenu"></i></Transition>
+          <Transition><i v-if="showBurgerMenu" class="fa-solid fa-xmark cursor-pointer text-xl absolute right-4" @click="closeBurgerMenu"></i></Transition>      
+        </div>        
+      </div>
+      <Transition name="menuItems" :duration="550">
+          <nav class="text-center mt-1 text-base pb-3 bg-white z-10" v-if="showBurgerMenu">
             <ul @click="closeBurgerMenu">
               <li class="mb-3">
                 <RouterLink class="ml-2 mr-2 hover:underline" to="/">Home</RouterLink>
@@ -51,14 +52,12 @@ function closeBurgerMenu(){
               <li class="mb-3">
                 <RouterLink class="ml-2 mr-2 hover:underline" to="/about">About</RouterLink>
               </li>
-              <li>
+              <li class="mb-3">
                 <RouterLink class="ml-2 mr-2 hover:underline" to="/contact">Contact</RouterLink>
               </li>
             </ul>         
           </nav>
         </Transition>
-        
-      </div>
     </div>
     <!-- End mobile screen nav -->
   </header>
@@ -79,6 +78,17 @@ function closeBurgerMenu(){
 
 .v-enter-from,
 .v-leave-to {
+  opacity: 0;
+}
+
+.menuItems-enter-active,
+.menuItems-leave-active {
+  transition: all 0.5s ease-in-out;
+}
+
+.menuItems-enter-from,
+.menuItems-leave-to {
+  transform: translateY(-100px);
   opacity: 0;
 }
 </style>
