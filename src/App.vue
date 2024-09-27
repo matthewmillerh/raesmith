@@ -41,7 +41,7 @@ function closeBurgerMenu(){
         </div>        
       </div>
       <Transition name="menuItems" :duration="550">
-          <nav class="text-center mt-1 text-base pb-3 bg-white z-10" v-if="showBurgerMenu">
+          <nav class="text-left pl-3 mt-1 text-base pb-3 bg-white z-10 w-3/5 float-right h-screen bg-opacity-70" v-if="showBurgerMenu">
             <ul @click="closeBurgerMenu">
               <li class="mb-3">
                 <RouterLink class="ml-2 mr-2 hover:underline" to="/">Home</RouterLink>
@@ -88,7 +88,7 @@ function closeBurgerMenu(){
 
 .menuItems-enter-from,
 .menuItems-leave-to {
-  transform: translateY(-100px);
+  transform: translateX(100px);
   opacity: 0;
 }
 </style>
