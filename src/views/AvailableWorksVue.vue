@@ -56,20 +56,37 @@ onMounted(() => {
       <div
         class="h-60 w-60 p-2 ml-3 mr-3 mt-3 mb-1 border border-gray-300 bg-gray-100 rounded flex justify-center align-middle hover:cursor-pointer"
       >
+      <div class="container relative inline-block">
         <img
           :src="artwork[0]"
           :alt="artwork[1]"
-          class="max-w-full max-h-full rounded"
+          class="max-w-full max-h-full rounded ml-auto mr-auto"
         />
+        <!-- Information Block -->
+         <div class="absolute top-0 left-0 bottom-0 right-0 transition-all duration-300 opacity-0 hover:opacity-100 rounded hover:bg-opacity-45 hover:bg-black text-white flex justify-end items-end">
+          <div class="p-2 text-xs">
+            <p class="text-wrap text-right">{{ artwork[1] }}</p>
+            <p class="text-right">{{ artwork[2] }}</p>
+            <p class="text-right">{{ artwork[3] }}</p>
+            <p v-if="showPrices" class="text-right">{{ artwork[4] }}</p>
+          </div>
+          
+         </div>
       </div>
-      <div class="p-1 ml-3 mr-3 mt-0 mb-3 border rounded text-center text-wrap w-60">  
+        
+      </div>
+
+      <!-- Information Block -->
+      <!-- <div class="p-1 ml-3 mr-3 mt-0 mb-3 border rounded text-center text-wrap w-60">  
         <p class="text-wrap">{{ artwork[1] }}</p>
         <p>{{ artwork[2] }}</p>
         <p>{{ artwork[3] }}</p>
         <p v-if="showPrices">{{ artwork[4] }}</p>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
 
-<style></style>
+<style>
+
+</style>
