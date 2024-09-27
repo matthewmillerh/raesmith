@@ -22,7 +22,7 @@ const sendMail = () => {
             <p class="mb-5"><input type="text" placeholder=" Name" name="from_name" :value="inputFieldReset" class="rounded border border-gray-400 w-full" required/></p>
             <p class="mb-5"><input type="email" placeholder=" Email" name="email" :value="inputFieldReset" class="rounded border border-gray-400 w-full" required/></p>
             <p class="mb-5"><textarea placeholder=" Message" name="message" :value="inputFieldReset" class="rounded border border-gray-400 w-full h-60" required></textarea></p>
-            <button type="submit" name="send" class="border border-gray-400 bg-gray-200 rounded p-2 font-semibold">Submit</button>
+            <button type="submit" name="send" class="border border-gray-100 bg-gray-50 rounded p-2">Submit</button>
         </div>
     </form>
     
