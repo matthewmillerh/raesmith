@@ -67,21 +67,27 @@ onMounted(() => {
       <div
         class="max-h-96 max-w-72 p-2 ml-3 mr-3 mt-3 mb-1 border border-gray-300 bg-gray-50 rounded flex justify-center items-center hover:cursor-pointer relative object-contain aspect-[12/16]"
       >
-        <img
-          :src="artwork[0]"
-          :alt="artwork[1]"
-          class="max-w-full rounded flex justify-center align-middle ml-auto mr-auto"
-          :ref="(el) => (imageRef[artwork[0]] = el)"
-        />
-        <!-- Information Block -->
-         <div class="absolute top-0 left-0 bottom-0 right-0 transition-all duration-300 opacity-0 hover:opacity-100 rounded hover:bg-opacity-45 hover:bg-black text-white flex justify-end items-end" @click="clickImg(artwork[0])">
-          <div class="p-2 text-xs">
-            <p class="text-wrap text-right">{{ artwork[1] }}</p>
-            <p class="text-right">{{ artwork[2] }}</p>
-            <p class="text-right">{{ artwork[3] }}</p>
-            <p v-if="showPrices" class="text-right">{{ artwork[4] }}</p>
-          </div>          
-         </div>       
+      <Transition>
+        <div v-if="showImages" class="transition-all">
+            <img
+            :src="artwork[0]"
+            :alt="artwork[1]"
+            class="max-w-full rounded flex justify-center align-middle ml-auto mr-auto"
+            :ref="(el) => (imageRef[artwork[0]] = el)"
+          />
+          <!-- Information Block -->
+          <div class="absolute top-0 left-0 bottom-0 right-0 transition-all duration-300 opacity-0 hover:opacity-100 rounded hover:bg-opacity-45 hover:bg-black text-white flex justify-end items-end" @click="clickImg(artwork[0])">
+            <div class="p-2 text-xs">
+              <p class="text-wrap text-right">{{ artwork[1] }}</p>
+              <p class="text-right">{{ artwork[2] }}</p>
+              <p class="text-right">{{ artwork[3] }}</p>
+              <p v-if="showPrices" class="text-right">{{ artwork[4] }}</p>
+            </div>          
+          </div>  
+        </div>
+         
+      </Transition>
+            
       </div>
 
       <!-- Information Block -->
@@ -96,5 +102,13 @@ onMounted(() => {
 </template>
 
 <style>
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.5s ease-in-out;
+}
 
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+}
 </style>
