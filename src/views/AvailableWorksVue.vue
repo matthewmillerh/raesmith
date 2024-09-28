@@ -65,14 +65,14 @@ onMounted(() => {
   >
     <div v-for="artwork in artworkDetails" :key="artwork">
       <div
-        class="max-h-96 max-w-72 p-2 ml-3 mr-3 mt-3 mb-1 border border-gray-300 bg-gray-50 rounded flex justify-center items-center hover:cursor-pointer relative object-contain aspect-[12/16]"
+        class="max-h-96 max-w-72 p-2 ml-3 mr-3 mt-3 mb-1 border border-gray-300 bg-gray-50 rounded flex justify-center items-center hover:cursor-pointer relative object-contain aspect-[12/16] box-border overflow-hidden"
       >
       <Transition>
         <div v-if="showImages" class="transition-all">
             <img
             :src="artwork[0]"
             :alt="artwork[1]"
-            class="max-w-full rounded flex justify-center align-middle ml-auto mr-auto"
+            class="max-w-full h-auto rounded block"
             :ref="(el) => (imageRef[artwork[0]] = el)"
           />
           <!-- Information Block -->
