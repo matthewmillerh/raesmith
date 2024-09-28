@@ -72,7 +72,7 @@ onMounted(() => {
             <img
             :src="artwork[0]"
             :alt="artwork[1]"
-            class="max-w-full h-auto rounded block"
+            class="max-w-full h-auto p-1 rounded block"
             :ref="(el) => (imageRef[artwork[0]] = el)"
           />
           <!-- Information Block -->
