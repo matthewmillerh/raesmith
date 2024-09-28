@@ -52,14 +52,14 @@ onMounted(() => {
     //load image details into an array and load artwork details into a nested array
     loadImages()
 
-    //only show images after mount to prevent image press on mobile
+    //only show images after they've been loaded
     showImages.value = true;
 })
 
 </script>
 
 <template>
-  <Transition>
+  <Transition name="imageContainer">
   <div
     class="flex justify-center flex-wrap sm:ml-4 sm:mr-4 md:ml-20 md:mr-20 lg:ml-40 lg:mr-40 mt-14"
     v-viewer.static="{ transition: false, scalable: false, rotatable: false, fullscreen: false }"
@@ -99,13 +99,13 @@ onMounted(() => {
 </template>
 
 <style>
-.v-enter-active,
-.v-leave-active {
-  transition: opacity 0.5s ease-in-out;
+.imageContainer-enter-active,
+.imageContainer-leave-active {
+  transition: opacity 2s ease-in-out;
 }
 
-.v-enter-from,
-.v-leave-to {
+.imageContainer-enter-from,
+.imageContainer-leave-to {
   opacity: 0;
 }
 </style>
