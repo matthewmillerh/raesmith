@@ -41,7 +41,7 @@ function closeBurgerMenu(){
         <h3 class="font text-xs text-center mt-2">Emily Rae Smith Labuschagne</h3>      
       </div>
       <Transition name="menuItems" :duration="550">
-          <nav class="text-left pl-3 mt-1 text-base pb-3 bg-white z-10 w-3/5 float-right h-screen bg-opacity-80" v-if="showBurgerMenu">
+          <nav class="text-left pl-3 text-base pb-3 bg-white z-10 w-3/5 float-right h-screen bg-opacity-80" v-if="showBurgerMenu">
             <ul @click="closeBurgerMenu">
               <li class="mb-6 mt-8">
                 <RouterLink class="ml-2 mr-2 hover:underline text-sm" to="/">Home</RouterLink>
