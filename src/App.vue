@@ -24,6 +24,8 @@ function closeBurgerMenu(){
         <nav class="text-center mt-3 text-base">
           <RouterLink class="ml-2 mr-2 hover:underline" to="/">Home</RouterLink>
           <RouterLink class="ml-2 mr-2 hover:underline" to="/available-works/all">Available Works</RouterLink>
+          <RouterLink class="ml-2 mr-2 hover:underline" to="/projects">Projects</RouterLink>
+          <RouterLink class="ml-2 mr-2 hover:underline" to="/text-pieces">Text Pieces</RouterLink>
           <RouterLink class="ml-2 mr-2 hover:underline" to="/about">About</RouterLink>
           <RouterLink class="ml-2 mr-2 hover:underline" to="/contact">Contact</RouterLink>
         </nav>
@@ -48,6 +50,9 @@ function closeBurgerMenu(){
               </li>
               <li class="mb-6">
                 <RouterLink class="ml-2 mr-2 hover:underline text-sm" to="/available-works/all">Available Works</RouterLink>
+              </li>
+              <li class="mb-6">
+                <RouterLink class="ml-2 mr-2 hover:underline text-sm" to="/projects">Projects</RouterLink>
               </li>
               <li class="mb-6">
                 <RouterLink class="ml-2 mr-2 hover:underline text-sm" to="/about">About</RouterLink>
