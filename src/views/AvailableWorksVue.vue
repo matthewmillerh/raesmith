@@ -74,7 +74,7 @@ onMounted(() => {
   >
     <div v-for="(artwork, index) in artworkDetails" :key="artwork">
       <div
-        class="max-h-96 max-w-72 p-2 ml-3 mr-3 mt-3 mb-1 border border-gray-300 bg-gray-50 rounded flex justify-center items-center hover:cursor-pointer relative object-contain aspect-[12/16] box-border overflow-hidden"
+        class="max-h-96 max-w-72 p-2 ml-3 mr-3 mt-3 mb-1 border border-white bg-gray-100 rounded flex justify-center items-center hover:cursor-pointer relative object-contain aspect-[12/16] box-border overflow-hidden"
       >
       
             <img
