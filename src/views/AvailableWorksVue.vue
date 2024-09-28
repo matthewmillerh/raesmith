@@ -38,8 +38,15 @@ function clickImg(img){
   imageRef.value[img].click()
 }
 
-//variable to delay images being shown till mounted
-const showImages = ref(false)
+//only show images after all have loaded
+function checkImagesLoaded(index){
+  if(index === artworkDetails.value.length - 1){
+    imagesLoaded.value = true;
+  }
+}
+
+//only display images after they have loaded
+const imagesLoaded = ref(false)
 
 onMounted(() => {
     const route = useRoute()
@@ -51,21 +58,23 @@ onMounted(() => {
 
     //load image details into an array and load artwork details into a nested array
     loadImages()
-
-    //only show images after they've been loaded
-    showImages.value = true;
 })
 
 </script>
 
 <template>
-  <Transition name="imageContainer">
+  <Transition name="imageLoading">
+    <div class="mt-5 h-10 w-10 fixed left-1/2 right-1/2" v-if="!imagesLoaded">
+    <i class="fa-solid fa-spinner fa-spin text-5xl"></i>
+  </div>
+  </Transition>
+  
   <div
     class="flex justify-center flex-wrap sm:ml-4 sm:mr-4 md:ml-20 md:mr-20 lg:ml-40 lg:mr-40 mt-14"
     v-viewer.static="{ transition: false, scalable: false, rotatable: false, fullscreen: false }"
-    v-if="showImages"
+    v-show="imagesLoaded"
   >
-    <div v-for="artwork in artworkDetails" :key="artwork">
+    <div v-for="(artwork, index) in artworkDetails" :key="artwork">
       <div
         class="max-h-96 max-w-72 p-2 ml-3 mr-3 mt-3 mb-1 border border-gray-300 bg-gray-50 rounded flex justify-center items-center hover:cursor-pointer relative object-contain aspect-[12/16] box-border overflow-hidden"
       >
@@ -74,7 +83,8 @@ onMounted(() => {
             :src="artwork[0]"
             :alt="artwork[1]"
             class="max-w-full h-auto p-1 rounded block"
-            :ref="(el) => (imageRef[artwork[0]] = el)"
+            :ref="(el) => (imageRef[artwork[0]] = el)"    
+            @load="checkImagesLoaded(index)"       
           />
           <!-- Information Block -->
           <div class="absolute top-0 left-0 bottom-0 right-0 transition-all duration-300 opacity-0 hover:opacity-100 rounded hover:bg-opacity-45 hover:bg-black text-white flex justify-end items-end" @click="clickImg(artwork[0])">
@@ -95,17 +105,16 @@ onMounted(() => {
       </div> -->
     </div>
   </div>
-</Transition>
 </template>
 
 <style>
-.imageContainer-enter-active,
-.imageContainer-leave-active {
-  transition: opacity 2s ease-in-out;
+.imageLoading-enter-active,
+.imageLoading-leave-active {
+  transition: opacity 0.5s ease-in-out;
 }
 
-.imageContainer-enter-from,
-.imageContainer-leave-to {
+.imageLoading-enter-from,
+.imageLoading-leave-to {
   opacity: 0;
 }
 </style>
