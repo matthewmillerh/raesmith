@@ -38,6 +38,9 @@ function clickImg(img){
   imageRef.value[img].click()
 }
 
+//variable to delay images being shown till mounted
+const showImages = ref(false)
+
 onMounted(() => {
     const route = useRoute()
 
@@ -48,6 +51,9 @@ onMounted(() => {
 
     //load image details into an array and load artwork details into a nested array
     loadImages()
+
+    //only show images after mount to prevent image press on mobile
+    showImages.value = true;
 })
 
 </script>
@@ -59,13 +65,12 @@ onMounted(() => {
   >
     <div v-for="artwork in artworkDetails" :key="artwork">
       <div
-        class="h-60 w-60 p-2 ml-3 mr-3 mt-3 mb-1 border border-gray-300 bg-gray-100 rounded flex justify-center align-middle hover:cursor-pointer"
+        class="max-h-96 max-w-72 p-2 ml-3 mr-3 mt-3 mb-1 border border-gray-300 bg-gray-50 rounded flex justify-center items-center hover:cursor-pointer relative object-contain aspect-[12/16]"
       >
-      <div class="container relative inline-block">
         <img
           :src="artwork[0]"
           :alt="artwork[1]"
-          class="max-w-full max-h-full rounded ml-auto mr-auto"
+          class="max-w-full max-h-full rounded flex justify-center align-middle ml-auto mr-auto"
           :ref="(el) => (imageRef[artwork[0]] = el)"
         />
         <!-- Information Block -->
@@ -75,11 +80,8 @@ onMounted(() => {
             <p class="text-right">{{ artwork[2] }}</p>
             <p class="text-right">{{ artwork[3] }}</p>
             <p v-if="showPrices" class="text-right">{{ artwork[4] }}</p>
-          </div>
-          
-         </div>
-      </div>
-        
+          </div>          
+         </div>       
       </div>
 
       <!-- Information Block -->
