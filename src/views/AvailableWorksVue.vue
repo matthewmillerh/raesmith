@@ -64,13 +64,13 @@ onMounted(() => {
 
 <template>
   <Transition name="imageLoading">
-    <div class="mt-5 h-10 w-10 fixed left-1/2 right-1/2" v-if="!imagesLoaded">
+    <div class="mt-22 sm:mt-14 h-10 w-10 fixed left-1/2 right-1/2" v-if="!imagesLoaded">
     <i class="fa-solid fa-spinner fa-spin text-5xl"></i>
   </div>
   </Transition>
   
   <div
-    class="flex justify-center flex-wrap sm:ml-4 sm:mr-4 md:ml-20 md:mr-20 lg:ml-40 lg:mr-40 mt-14"
+    class="flex justify-center flex-wrap sm:ml-4 sm:mr-4 md:ml-20 md:mr-20 lg:ml-40 lg:mr-40 mt-24 sm:mt-14"
     v-viewer.static="{ transition: false, scalable: false, rotatable: false, fullscreen: false }"
     v-show="imagesLoaded"
   >
@@ -110,7 +110,7 @@ onMounted(() => {
 <style>
 .imageLoading-enter-active,
 .imageLoading-leave-active {
-  transition: opacity 0.5s ease-in-out;
+  transition: opacity 0.2s ease-out;
 }
 
 .imageLoading-enter-from,
