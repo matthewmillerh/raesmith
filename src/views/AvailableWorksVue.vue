@@ -59,16 +59,17 @@ onMounted(() => {
 </script>
 
 <template>
+  <Transition>
   <div
     class="flex justify-center flex-wrap sm:ml-4 sm:mr-4 md:ml-20 md:mr-20 lg:ml-40 lg:mr-40 mt-14"
     v-viewer.static="{ transition: false, scalable: false, rotatable: false, fullscreen: false }"
+    v-if="showImages"
   >
     <div v-for="artwork in artworkDetails" :key="artwork">
       <div
         class="max-h-96 max-w-72 p-2 ml-3 mr-3 mt-3 mb-1 border border-gray-300 bg-gray-50 rounded flex justify-center items-center hover:cursor-pointer relative object-contain aspect-[12/16] box-border overflow-hidden"
       >
-      <Transition>
-        <div v-if="showImages" class="transition-all">
+      
             <img
             :src="artwork[0]"
             :alt="artwork[1]"
@@ -83,13 +84,8 @@ onMounted(() => {
               <p class="text-right">{{ artwork[3] }}</p>
               <p v-if="showPrices" class="text-right">{{ artwork[4] }}</p>
             </div>          
-          </div>  
-        </div>
-         
-      </Transition>
-            
+          </div>                   
       </div>
-
       <!-- Information Block -->
       <!-- <div class="p-1 ml-3 mr-3 mt-0 mb-3 border rounded text-center text-wrap w-60">  
         <p class="text-wrap">{{ artwork[1] }}</p>
@@ -99,6 +95,7 @@ onMounted(() => {
       </div> -->
     </div>
   </div>
+</Transition>
 </template>
 
 <style>
