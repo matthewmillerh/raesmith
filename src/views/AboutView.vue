@@ -1,5 +1,5 @@
 <template>
-  <div class="md:w-1/3 lg:w-1/3 sm:w-10/12 w-10/12 ml-auto mr-auto mt-14 text-justify">
+  <div class="md:w-1/3 lg:w-1/3 sm:w-10/12 w-10/12 ml-auto mr-auto text-justify">
     <p>
 Rutrum nunc inceptos nisi taciti litora. Rhoncus interdum nascetur lorem nisi lacus habitasse sodales placerat in. Cum, massa ante aliquam varius elementum lectus habitasse quis hac sodales taciti sagittis. Viverra senectus ipsum mauris senectus, faucibus aenean vivamus convallis duis sem. Amet porttitor mauris torquent. Tempor sem purus arcu in ultricies at potenti penatibus. Litora facilisi parturient ridiculus nam faucibus interdum nulla dui nisi penatibus. Dictum platea massa ultricies nunc ligula mattis pretium suscipit sociis orci.
 </p>

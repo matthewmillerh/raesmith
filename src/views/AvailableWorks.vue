@@ -15,7 +15,7 @@ onBeforeMount(() => {
 })
 </script>
 <template>
-<div><imageDisplay image-folder="/public/images/text-pieces/*.jpg" :prices="showPrices"></imageDisplay></div>
+<div><imageDisplay image-folder="/public/images/*.jpg" :prices="showPrices"></imageDisplay></div>
 </template>
   
 <style></style>

@@ -63,12 +63,12 @@ onMounted(() => {
 </script>
 
 <template>
-    <div class="mt-22 sm:mt-14 h-10 w-10 fixed left-1/2 right-1/2" v-if="!imagesLoaded">
+  <div class="mt-22 h-10 w-10 fixed left-1/2 right-1/2" v-if="!imagesLoaded">
     <i class="fa-solid fa-spinner fa-spin text-5xl"></i>
   </div>
   
   <div
-    class="flex justify-center flex-wrap sm:ml-4 sm:mr-4 md:ml-20 md:mr-20 lg:ml-40 lg:mr-40 mt-24 sm:mt-14"
+    class="flex justify-center flex-wrap sm:ml-4 sm:mr-4 md:ml-20 md:mr-20 lg:ml-40 lg:mr-40"
     v-viewer.static="{ transition: false, scalable: false, rotatable: false, fullscreen: false }"
     v-show="imagesLoaded"
   >
@@ -87,10 +87,10 @@ onMounted(() => {
           <!-- Information Block -->
           <div class="absolute top-0 left-0 bottom-0 right-0 transition-all duration-300 opacity-0 hover:opacity-100 rounded hover:bg-opacity-45 hover:bg-black text-white flex justify-end items-end" @click="clickImg(artwork[0])">
             <div class="p-2 text-xs">
-              <p class="text-wrap text-right">{{ artwork[1] }}</p>
-              <p class="text-right">{{ artwork[2] }}</p>
+              <p class="text-wrap text-right">{{ artwork[2] }}</p>
               <p class="text-right">{{ artwork[3] }}</p>
-              <p v-if="showPrices" class="text-right">{{ artwork[4] }}</p>
+              <p class="text-right">{{ artwork[4] }}</p>
+              <p v-if="showPrices" class="text-right">{{ artwork[5] }}</p>
             </div>          
           </div>                   
       </div>

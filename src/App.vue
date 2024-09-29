@@ -19,8 +19,8 @@ function closeBurgerMenu(){
   <header>
     <!-- Large screen nav -->
     <div class="hidden sm:block">
-      <div class="w-full min-h-24 p-1 border-b border-black mb-4">
-        <h3 class="font-semibold text-2xl text-center mt-2">Emily Rae Smith Labuschagne</h3>
+      <div class="w-full min-h-24 p-1 mb-4 fixed top-0 z-20 bg-white">
+        <h3 class="text-2xl text-center mt-2">Emily Rae Smith Labuschagne</h3>
         <nav class="text-center mt-3 text-base">
           <RouterLink class="ml-2 mr-2 hover:underline" to="/">Home</RouterLink>
           <RouterLink class="ml-2 mr-2 hover:underline" to="/available-works/all">Available Works</RouterLink>
@@ -55,6 +55,9 @@ function closeBurgerMenu(){
                 <RouterLink class="ml-2 mr-2 hover:underline text-sm" to="/projects">Projects</RouterLink>
               </li>
               <li class="mb-6">
+                <RouterLink class="ml-2 mr-2 hover:underline text-sm" to="/text-pieces">Text Pieces</RouterLink>
+              </li>
+              <li class="mb-6">
                 <RouterLink class="ml-2 mr-2 hover:underline text-sm" to="/about">About</RouterLink>
               </li>
               <li class="mb-6">
@@ -67,7 +70,10 @@ function closeBurgerMenu(){
     <!-- End mobile screen nav -->
   </header>
 
-  <RouterView class="mt-24"/>
+  <div class="mt-24">
+    <RouterView class="mt-28"/>
+  </div>
+  
 </template>
 
 <style scoped>
