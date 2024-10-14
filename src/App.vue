@@ -45,23 +45,23 @@ function closeBurgerMenu(){
       <Transition name="menuItems" :duration="550">
           <nav class="text-left pl-3 text-base pb-3 bg-white z-10 w-3/5 float-right h-screen bg-opacity-80" v-if="showBurgerMenu">
             <ul @click="closeBurgerMenu">
-              <li class="mb-6 mt-8">
-                <RouterLink class="ml-2 mr-2 hover:underline text-sm" to="/">Home</RouterLink>
+              <li class="mb-6 mt-10">
+                <RouterLink class="hover:underline text-sm p-2" to="/">Home</RouterLink>
               </li>
               <li class="mb-6">
-                <RouterLink class="ml-2 mr-2 hover:underline text-sm" to="/available-works/all">Available Works</RouterLink>
+                <RouterLink class="hover:underline text-sm p-2 inline-block" to="/available-works/all">Available Works</RouterLink>
               </li>
               <li class="mb-6">
-                <RouterLink class="ml-2 mr-2 hover:underline text-sm" to="/projects">Projects</RouterLink>
+                <RouterLink class="hover:underline text-sm p-2" to="/projects">Projects</RouterLink>
               </li>
               <li class="mb-6">
-                <RouterLink class="ml-2 mr-2 hover:underline text-sm" to="/text-pieces">Text Pieces</RouterLink>
+                <RouterLink class="hover:underline text-sm p-2 inline-block" to="/text-pieces">Text Pieces</RouterLink>
               </li>
               <li class="mb-6">
-                <RouterLink class="ml-2 mr-2 hover:underline text-sm" to="/about">About</RouterLink>
+                <RouterLink class="hover:underline text-sm p-2" to="/about">About</RouterLink>
               </li>
               <li class="mb-6">
-                <RouterLink class="ml-2 mr-2 hover:underline text-sm" to="/contact">Contact</RouterLink>
+                <RouterLink class="hover:underline text-sm p-2" to="/contact">Contact</RouterLink>
               </li>
             </ul>         
           </nav>
@@ -70,15 +70,15 @@ function closeBurgerMenu(){
     <!-- End mobile screen nav -->
   </header>
 
-  <div class="mt-24">
-    <RouterView class="mt-28"/>
+  <div class="mt-28">
+    <RouterView/>
   </div>
   
 </template>
 
 <style scoped>
 .router-link-active {
-  color: #111827;
+  color: black;
 }
 
 .v-enter-active,

@@ -1,7 +1,11 @@
 <script setup>
 import { onMounted, ref } from 'vue'
-import { useRoute } from 'vue-router';
 
+
+const props = defineProps({
+  imageFolder: String,
+  prices: Boolean
+})
 const images = ref([])
 const artworkDetails = ref([])
 const showPrices = ref(false)
@@ -10,7 +14,13 @@ const showPrices = ref(false)
 function loadImages(){
   let artwork = []
   let artworkTemp = []
-  images.value = import.meta.glob('/public/images/*.jpg')
+
+  if(props.imageFolder === "/public/images/*.jpg"){
+    images.value = import.meta.glob("/public/images/*.jpg")
+  } else if (props.imageFolder === "/public/images/text-pieces/*.jpg"){
+    images.value = import.meta.glob("/public/images/text-pieces/*.jpg") 
+  }
+  
 
   //loop through each image imported from the folder
   for(let path in images.value){
@@ -21,11 +31,19 @@ function loadImages(){
     artworkTemp = path.slice(15).split('-')
 
     //add each the artwork details to an array
-    artwork.push(path.slice(7))    
+    artwork.push(path.slice(7))  
+    
+    //fix later
+    //
+    //
+    //
+    //
+    //
     artwork.push(artworkTemp[0])
     artwork.push(artworkTemp[1])
     artwork.push(artworkTemp[2])
     artwork.push(artworkTemp[3])
+    artwork.push(artworkTemp[4])
 
     //add the array of artwork details to the main nested array of artworks
     artworkDetails.value.push(artwork)  
@@ -49,27 +67,26 @@ function checkImagesLoaded(index){
 const imagesLoaded = ref(false)
 
 onMounted(() => {
-    const route = useRoute()
-
-    //only show prices if key is used in URL
-    if(route.params.key === 'xF16LK'){
-        showPrices.value = true
-    }
-
     //load image details into an array and load artwork details into a nested array
     loadImages()
+
+    showPrices.value = props.prices
+   
 })
 
 </script>
 
 <template>
-  <div class="mt-22 h-10 w-10 fixed left-1/2 right-1/2" v-if="!imagesLoaded">
-    <i class="fa-solid fa-spinner fa-spin text-5xl"></i>
-  </div>
+  <!-- Loading icon -->
+   <Transition name="imageLoading">
+    <div class="mt-22 h-10 w-10 absolute left-1/2 transform: -translate-x-1/2 opacity-75" v-if="!imagesLoaded">
+      <i class="fa-solid fa-spinner fa-spin text-4xl"></i>
+    </div>
+   </Transition>
   
   <div
     class="flex justify-center flex-wrap sm:ml-4 sm:mr-4 md:ml-20 md:mr-20 lg:ml-40 lg:mr-40"
-    v-viewer.static="{ transition: false, scalable: false, rotatable: false, fullscreen: false }"
+    v-viewer.static="{ transition: false, scalable: false, rotatable: false, fullscreen: false, navbar: false }"
     v-show="imagesLoaded"
   >
     <div v-for="(artwork, index) in artworkDetails" :key="artwork">
@@ -90,17 +107,13 @@ onMounted(() => {
               <p class="text-wrap text-right">{{ artwork[2] }}</p>
               <p class="text-right">{{ artwork[3] }}</p>
               <p class="text-right">{{ artwork[4] }}</p>
-              <p v-if="showPrices" class="text-right">{{ artwork[5] }}</p>
             </div>          
           </div>                   
       </div>
-      <!-- Information Block -->
-      <!-- <div class="p-1 ml-3 mr-3 mt-0 mb-3 border rounded text-center text-wrap w-60">  
-        <p class="text-wrap">{{ artwork[1] }}</p>
-        <p>{{ artwork[2] }}</p>
-        <p>{{ artwork[3] }}</p>
-        <p v-if="showPrices">{{ artwork[4] }}</p>
-      </div> -->
+      <!-- Price Block -->
+      <div class="p-1 ml-3 mr-3 mt-0 mb-3 rounded text-center max-w-72">  
+        <p v-if="showPrices">{{ artwork[5] }}</p>
+      </div>
     </div>
   </div>
 </template>
@@ -108,7 +121,7 @@ onMounted(() => {
 <style>
 .imageLoading-enter-active,
 .imageLoading-leave-active {
-  transition: opacity 0.2s ease-out;
+  transition: opacity 0.1s ease-out;
 }
 
 .imageLoading-enter-from,

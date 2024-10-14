@@ -1,5 +1,5 @@
 <script setup>
-import imageDisplay from '@/components/imageDisplay.vue';
+import ImageGallery from '@/components/ImageGallery.vue';
 import { useRoute } from 'vue-router';
 import { onBeforeMount, ref } from 'vue';
 
@@ -15,7 +15,7 @@ onBeforeMount(() => {
 })
 </script>
 <template>
-<div><imageDisplay image-folder="/public/images/*.jpg" :prices="showPrices"></imageDisplay></div>
+<div><ImageGallery image-folder="/public/images/*.jpg" :prices="showPrices"></ImageGallery></div>
 </template>
   
 <style></style>

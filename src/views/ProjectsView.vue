@@ -1,3 +1,6 @@
+<script setup>
+</script>
+
 <template>
   <div class="md:w-1/3 lg:w-1/3 sm:w-10/12 w-10/12 ml-auto mr-auto mt-14 text-justify">
     <p>
